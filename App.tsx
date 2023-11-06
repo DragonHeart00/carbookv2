@@ -6,7 +6,6 @@
  */
 
 import React from 'react';
-import WelcomeScreen from './src/screens/WelcomScreen';
 import AppNavigation from "./src/navigation";
 
 function App(): JSX.Element {
