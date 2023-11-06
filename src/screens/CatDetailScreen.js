@@ -40,13 +40,14 @@ export default function CatDetailScreen() {
             <ScrollView
                 showsVerticalScrollIndicator={false}
                 contentContainerStyle={{ paddingBottom: 10 }}
-                className=" pt-14"
+                className=" pt-2"
             >
                 <View
                     className=" flex-row justify-between items-center"
                     style={{
                         borderBottomWidth: 1,
                         borderBottomColor: 'lightgray',
+                        // Android shadow properties
                     }}
                 >
                     <TouchableOpacity onPress={()=> navigation.goBack()} className="p-2 shadow">
@@ -55,7 +56,7 @@ export default function CatDetailScreen() {
                     <Text style={{fontSize: hp(2)}} className="font-medium flex-1 text-neutral-500">
                         {itemName}
                     </Text>
-                    <TouchableOpacity onPress={()=> setIsFavourite(!isFavourite)} className="p-2 mr-5">
+                    <TouchableOpacity onPress={()=> setIsFavourite(!isFavourite)} className="p-4 mr-5">
                         <HeartIcon size={hp(3.0)} strokeWidth={3.0} color={isFavourite? "#5DB075": "gray"} />
                     </TouchableOpacity>
                 </View>
@@ -88,7 +89,7 @@ export default function CatDetailScreen() {
                                     onPress={() => navigation.navigate('MapView', {itemName:itemName,longitude:longitude,latitude:latitude })}
                                     style={{ borderRadius: 15 }}
                                     region={mapRegion}
-                                    blurRadius={40} className="h-32 w-full " >
+                                    blurRadius={30} className="h-32 w-full" >
                                     <Marker coordinate={mapRegion} title={itemName}/>
 
                                 </MapView>

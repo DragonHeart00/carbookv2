@@ -24,7 +24,7 @@ export default function MapViewScreen() {
             <ScrollView
                 showsVerticalScrollIndicator={false}
                 contentContainerStyle={{ paddingBottom: 10 }}
-                className=" pt-14"
+                className=" pt-4"
             >
                 <View
                     className=" flex-row justify-between items-center"
@@ -39,7 +39,7 @@ export default function MapViewScreen() {
                     <Text style={{fontSize: hp(2)}} className="font-medium flex-1 text-neutral-500">
                         {itemName}
                     </Text>
-                    <Text style={{ fontSize: hp(1.8) }} className="font-semibold text-green-600 pr-2">
+                    <Text style={{ fontSize: hp(1.8) }} className="font-semibold text-green-600 p-4 mr-3">
                         Vis vej
                     </Text>
                 </View>
