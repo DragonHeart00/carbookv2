@@ -53,11 +53,10 @@ export default function HomeScreen() {
 
   return (
     <View style={{ flex: 1, backgroundColor: 'white' }}>
-
       <View
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingBottom: 10 }}
-        className="space-y-5 pt-14"
+        className="space-y-5 pt-5"
       >
         <View
           className="mx-4 flex-row justify-between items-center"
