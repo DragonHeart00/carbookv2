@@ -91,7 +91,6 @@ export default function CatDetailScreen() {
                                     region={mapRegion}
                                     blurRadius={30} className="h-32 w-full" >
                                     <Marker coordinate={mapRegion} title={itemName}/>
-
                                 </MapView>
                             <TouchableOpacity
                                 onPress={() => navigation.goBack()}

@@ -17,7 +17,7 @@ export default function MapViewScreen() {
         longitude,
         latitudeDelta: 0.004,  // Decrease this value to zoom in further
         longitudeDelta: 0.004,  // Decrease this value to zoom in further
-    })
+    });
 
     return(
         <View style={{ flex: 1, backgroundColor: 'white' }}>

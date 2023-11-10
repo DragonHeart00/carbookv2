@@ -18,7 +18,7 @@ export default function WelcomeScreen() {
       () => (ring2padding.value = withSpring(ring2padding.value + hp(5.5))),
       300,
     );
-    setTimeout(()=> navigation.navigate('Home'), 500);
+    setTimeout(()=> navigation.navigate('tab'), 500);
   },[navigation, ring1padding, ring2padding]);
   return (
     <View className="flex-1 justify-center items-center space-y-10 bg-green-600">
