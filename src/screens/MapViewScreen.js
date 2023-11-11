@@ -1,9 +1,9 @@
-import {ScrollView, Text, TouchableOpacity, View} from "react-native";
-import {ChevronLeftIcon} from "react-native-heroicons/outline";
-import {heightPercentageToDP as hp, widthPercentageToDP as wp} from "react-native-responsive-screen";
-import MapView, {Callout, Marker} from "react-native-maps";
-import React, {useState} from "react";
-import {useNavigation, useRoute} from "@react-navigation/native";
+import {ScrollView, Text, TouchableOpacity, View} from 'react-native';
+import {ChevronLeftIcon} from 'react-native-heroicons/outline';
+import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
+import React, {useState} from 'react';
+import {useNavigation, useRoute} from '@react-navigation/native';
 
 
 export default function MapViewScreen() {
@@ -46,8 +46,12 @@ export default function MapViewScreen() {
 
                 <View>
                     <MapView
-                        style={{height: hp(99), width: hp(50)}}
-                        region={mapRegion}>
+
+                      zoomControlEnabled={true}
+                      showsMyLocationButton={true}
+                      provider={PROVIDER_GOOGLE}
+                      style={{height: hp(99), width: hp(50)}}
+                      region={mapRegion}>
                         <Marker coordinate={mapRegion} title={itemName}/>
 
                     </MapView>

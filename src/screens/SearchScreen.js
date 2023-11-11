@@ -1,15 +1,16 @@
 import { FlatList, Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ChevronRightIcon, MagnifyingGlassIcon } from 'react-native-heroicons/outline';
 import { firebase } from '../../config';
 import { useNavigation } from '@react-navigation/native';
-import MapView, { Marker } from 'react-native-maps';
+import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 
 
 export default function SearchScreen(){
 
   const navigation = useNavigation();
+  const mapRef = useRef();
   const [searchQuery, setSearchQuery] = useState('');
   const [mapRegion,setMapRegion] = useState({
     latitude:55.742360056765946,
@@ -104,6 +105,10 @@ export default function SearchScreen(){
       </View>
       <View>
         <MapView
+          ref={mapRef}
+          zoomControlEnabled={true}
+          showsMyLocationButton={true}
+          provider={PROVIDER_GOOGLE}
           style={{ borderRadius: 30, width: '94%' }}
           region={mapRegion}
           className="m-3 h-32"

@@ -6,8 +6,8 @@ import { HeartIcon} from 'react-native-heroicons/solid';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import Loading from '../components/loading';
 import Animated, { FadeInDown, } from 'react-native-reanimated';
-import MapView from "react-native-maps";
-import { Marker } from "react-native-svg";
+import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+import { Marker } from 'react-native-svg';
 
 
 
@@ -86,10 +86,13 @@ export default function CatDetailScreen() {
                             </Animated.View>
 
                                 <MapView
-                                    onPress={() => navigation.navigate('MapView', {itemName:itemName,longitude:longitude,latitude:latitude })}
-                                    style={{ borderRadius: 15 }}
-                                    region={mapRegion}
-                                    blurRadius={30} className="h-32 w-full" >
+                                  zoomControlEnabled={true}
+                                  showsMyLocationButton={true}
+                                  provider={PROVIDER_GOOGLE}
+                                  onPress={() => navigation.navigate('MapView', {itemName:itemName,longitude:longitude,latitude:latitude })}
+                                  style={{ borderRadius: 15 }}
+                                  region={mapRegion}
+                                  blurRadius={30} className="h-32 w-full" >
                                     <Marker coordinate={mapRegion} title={itemName}/>
                                 </MapView>
                             <TouchableOpacity
