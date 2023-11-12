@@ -5,9 +5,8 @@ import { ChevronLeftIcon} from 'react-native-heroicons/outline';
 import { HeartIcon} from 'react-native-heroicons/solid';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import Loading from '../components/loading';
-import Animated, { FadeInDown, } from 'react-native-reanimated';
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
-import { Marker } from 'react-native-svg';
+import Animated, { FadeInDown } from 'react-native-reanimated';
+import MapView, { Callout, Marker, PROVIDER_GOOGLE } from "react-native-maps";
 
 
 
@@ -57,7 +56,7 @@ export default function CatDetailScreen() {
                         {itemName}
                     </Text>
                     <TouchableOpacity onPress={()=> setIsFavourite(!isFavourite)} className="p-4 mr-5">
-                        <HeartIcon size={hp(3.0)} strokeWidth={3.0} color={isFavourite? "#5DB075": "gray"} />
+                        <HeartIcon size={hp(3.0)} strokeWidth={3.0} color={isFavourite ? '#5DB075' : 'gray'} />
                     </TouchableOpacity>
                 </View>
 
@@ -89,11 +88,14 @@ export default function CatDetailScreen() {
                                   zoomControlEnabled={true}
                                   showsMyLocationButton={true}
                                   provider={PROVIDER_GOOGLE}
-                                  onPress={() => navigation.navigate('MapView', {itemName:itemName,longitude:longitude,latitude:latitude })}
-                                  style={{ borderRadius: 15 }}
                                   region={mapRegion}
                                   blurRadius={30} className="h-32 w-full" >
-                                    <Marker coordinate={mapRegion} title={itemName}/>
+                                    <Marker
+                                      coordinate={mapRegion}>
+                                        <Callout onPress={() => navigation.navigate('MapView', { itemName: itemName, longitude:longitude,latitude:latitude })}>
+                                            <Text>{itemName}</Text>
+                                        </Callout>
+                                    </Marker>
                                 </MapView>
                             <TouchableOpacity
                                 onPress={() => navigation.goBack()}

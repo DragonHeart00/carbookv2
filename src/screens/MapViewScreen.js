@@ -46,11 +46,10 @@ export default function MapViewScreen() {
 
                 <View>
                     <MapView
-
                       zoomControlEnabled={true}
                       showsMyLocationButton={true}
                       provider={PROVIDER_GOOGLE}
-                      style={{height: hp(99), width: hp(50)}}
+                      style={{height: hp(85), width: hp(50)}}
                       region={mapRegion}>
                         <Marker coordinate={mapRegion} title={itemName}/>
 

@@ -1,10 +1,10 @@
-import { FlatList, Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { FlatList, Image, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import React, { useEffect, useRef, useState } from 'react';
 import { ChevronRightIcon, MagnifyingGlassIcon } from 'react-native-heroicons/outline';
 import { firebase } from '../../config';
 import { useNavigation } from '@react-navigation/native';
-import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
+import MapView, { Callout, Marker, PROVIDER_GOOGLE } from "react-native-maps";
 
 
 export default function SearchScreen(){
@@ -103,28 +103,28 @@ export default function SearchScreen(){
           </View>
         </View>
       </View>
-      <View>
+      <View style={{ flex: 1 }}>
         <MapView
           ref={mapRef}
           zoomControlEnabled={true}
           showsMyLocationButton={true}
           provider={PROVIDER_GOOGLE}
-          style={{ borderRadius: 30, width: '94%' }}
+          style={{ width: '94%' }}
           region={mapRegion}
           className="m-3 h-32"
         >
           {itemlist.map((item) => (
             <Marker
               key={item.id}
-              coordinate={{ latitude: item.latitude, longitude: item.longitude }}
-              title={item.name}
-            />
+              coordinate={{ latitude: item.latitude, longitude: item.longitude }}>
+              <Callout onPress={() => navigation.navigate('MapView', { itemName: item.name, longitude:item.longitude,latitude:item.latitude })}>
+                <Text>{item.name}</Text>
+              </Callout>
+            </Marker>
+
           ))}
         </MapView>
 
-      </View>
-
-      <View >
         <FlatList
           data={filteredItems}
           numColumns={1}
